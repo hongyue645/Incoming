@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Register.css';
 import {FaRegUser} from 'react-icons/fa'
 import {TfiEmail} from 'react-icons/tfi'
 import {RiLockPasswordFill} from 'react-icons/ri'
@@ -14,7 +15,10 @@ function Register() {
     const { username, email, password, confirmPassword, checked } = formData;
 
     const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }));
     }
 
     const onSubmit = (e) => {
@@ -52,8 +56,9 @@ function Register() {
                             Accept<a href="/terms" className='terms-link'>Terms and Conditions</a>
                         </label>
                     </div>
-
-                    <button type='submit'>Register</button>
+                    <div className='Submition'>
+                        <button type='submit' className='register-btn'>Register</button>
+                    </div>
                 </form>
             </div>
 

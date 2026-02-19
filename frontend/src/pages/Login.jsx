@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import {TfiEmail} from 'react-icons/tfi'
 import {RiLockPasswordFill} from 'react-icons/ri'
+import {useNavigate} from 'react-router-dom'
 import './Login.css';
 function Login() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         checked: false
     });
 
-    const onSubmit = (e) => {
+    const { email, password, checked } = formData; 
+    
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }));
+    }
+
+    const handleLogin = (e) => {
         e.preventDefault();
         // Handle form submission logic here
+        
+        navigate('/dashboard');
     }
     return (
         <>
@@ -44,7 +57,7 @@ function Login() {
                             <a href="/forgot-password" className='forgot-link'>Forgot password?</a>
                         </div>
                         <div className='Submition'>
-                            <button type='submit' className='login-button' onClick={onSubmit}>LOG IN</button>
+                            <button type='submit' className='login-button' onSubmit={handleLogin}>LOG IN</button>
                         </div>
                     </form>
                     <p className='register-link'>Don't have an account? <strong><a href="/register" className='create-account'>Create an account</a></strong></p>
