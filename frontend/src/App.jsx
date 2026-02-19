@@ -11,9 +11,10 @@ function App() {
       <Router>
         <div className='container'>
           <Routes>
-            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
           </Routes>
         </div>
       </Router>
